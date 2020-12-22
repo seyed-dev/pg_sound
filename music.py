@@ -58,10 +58,10 @@ def callback(message):
         else:
             bot.answerCallbackQuery(message['id'], f'⚠️ محدودیت ارسال / چند ثانیه صبر کنید', True)
     elif data.split('_')[0] == 'LIKE':
-        r.sadd(f"LIKE:{message['id']}", from_id)
-        r.srem(f"disLIKE:{message['id']}", from_id)
-        like_count = r.scard(f"LIKE:{message['id']}")
-        dislike_count = r.scard(f"disLIKE:{message['id']}")
+        r.sadd(f"LIKE:{message_id}", from_id)
+        r.srem(f"disLIKE:{message_id}", from_id)
+        like_count = r.scard(f"LIKE:{message_id}")
+        dislike_count = r.scard(f"disLIKE:{message_id}")
         bot.answerCallbackQuery(message['id'], 'رای شما با موفقیت ثبت شد ✅', True)
         bot.editMessageReplyMarkup(chat_id, message_id, reply_markup={
             'inline_keyboard': [
@@ -72,10 +72,10 @@ def callback(message):
             ]
         })
     elif data.split('_')[0] == 'disLIKE':
-        r.sadd(f"disLIKE:{message['id']}", from_id)
-        r.srem(f"LIKE:{message['id']}", from_id)
-        like_count = r.scard(f"LIKE:{message['id']}")
-        dislike_count = r.scard(f"disLIKE:{message['id']}")
+        r.sadd(f"disLIKE:{message_id}", from_id)
+        r.srem(f"LIKE:{message_id}", from_id)
+        like_count = r.scard(f"LIKE:{message_id}")
+        dislike_count = r.scard(f"disLIKE:{message_id}")
         bot.answerCallbackQuery(message['id'], 'رای شما با موفقیت ثبت شد ✅', True)
         bot.editMessageReplyMarkup(chat_id, message_id, reply_markup={
             'inline_keyboard': [
