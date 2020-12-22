@@ -1,7 +1,7 @@
 from tgclient import *
 import redis
 r = redis.StrictRedis(host='localhost', port=6379, db=2, decode_responses=True)
-token = '1497430533:AAHH0WrPOk7nnWSlaahDLLNFU_1sueueQEs'
+token = ''
 bot = TelegramBot(token, True)
 admins = [463152143]
 full_admin = 463152143
